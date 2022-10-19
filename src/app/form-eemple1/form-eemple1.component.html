@@ -1,0 +1,35 @@
+<form #userForm = "ngForm" (ngSubmit)="onSubmit(userForm)" >
+
+  <p>
+    <label>Firt name</label>
+    <input type="text" name="firstname" ngModel>
+  </p>
+
+  <p>
+    <label>Last name</label>
+    <input type="text" name="lastname" ngModel>
+  </p>
+
+  <p>
+    <label>Gender</label>
+    <input type="radio" name="male" ngModel> Male
+    <input type="radio" name="female" ngModel> Female
+  </p>
+
+  <p>
+    <label>Married</label>
+    <input type="checkbox" name="isMarried" ngModel>
+  </p>
+
+  <p>
+    <label>City</label>
+    <select name="city" ngModel>
+      <option *ngFor=" let c of listCity" [value]="c.id">
+          {{ c.name }}
+      </option>
+    </select>
+  </p>
+
+  <button type="submit"> Valider </button>
+
+</form>

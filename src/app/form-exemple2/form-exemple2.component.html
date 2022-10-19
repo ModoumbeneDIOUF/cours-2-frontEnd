@@ -1,0 +1,41 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+      <p>
+        <label>First name</label>
+        <input type="text" name="firstname" formControlName="firstname">
+      </p>
+
+      <p>
+        <label>Last name</label>
+        <input type="text" name="lastname" formControlName="lastname">
+      </p>
+
+      <p>
+        <label>Email</label>
+        <input type="text" name="email" formControlName="email">
+      </p>
+
+      <p>
+        <label>Gender</label>
+        <input type="radio" name="genre" value="male" formControlName="genre">Male
+        <input type="radio" name="genre" value="female" formControlName="genre">Female
+      </p>
+
+      <p>
+        <label>Married</label>
+        <input type="checkbox" name="isMarried" formControlName="isMarried">
+      </p>
+
+      <p>
+        <label>Country</label>
+        <select formControlName="city">
+            <option *ngFor="let city of cityList" [ngValue]="city.id">
+                  {{ city.name }}
+            </option>
+        </select>
+      </p>
+
+      <p>
+          <button  type="submit">Valider</button>
+      </p>
+</form>
