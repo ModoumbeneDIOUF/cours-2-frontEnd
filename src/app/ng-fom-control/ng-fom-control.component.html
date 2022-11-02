@@ -1,0 +1,39 @@
+<div class="container  col-md-6">
+  <form #loginForm = "ngForm" (ngSubmit)="onSubmit()">
+
+    <label>Email</label>
+    <input type="text" name="email" required [(ngModel)] = "user.email" #email="ngModel"
+      (keyup)="emailVerif(email.value)"
+      [class.is-invalid]="emailError || (email.invalid && email.touched)"
+      [class.is-valid]="email.valid"
+      class="form-control"
+      >
+      <div *ngIf="emailError || (email.invalid && email.touched)">
+
+          <p class="text-danger" [class.d-none]="email.untouched || email.valid"> Veuillez remplir ce champ </p>
+
+          <p class="text-danger" [class.d-none]="!emailError || email.value == ''"> Veuillez saisir l'email au bon format </p>
+
+        </div>
+
+        <div >
+          <label for="password">Password</label>
+           <span class="text-danger">*</span>
+          <input type="password" name="password" (keyup)="passwordLength(password.value)" required
+          [class.is-invalid]="passwordError || (password.invalid && password.touched)" [class.is-valid]="password.valid"
+          #password="ngModel" [(ngModel)]="user.password" class="form-control">
+
+
+            <div *ngIf="passwordError || (password.touched && password.invalid)">
+              <small class="text-danger" [class.d-none]="password.untouched || password.valid"> Veuillez remplir ce champ</small>
+              <small class="text-danger" [class.d-none]="!passwordError || password.value == ''"> Minimun 6 caractéres</small>
+          </div>
+        </div>
+
+
+
+        <input type="submit" class="mt-4 form-control btn btn-success"  value="Valider"
+        [disabled]="loginForm.invalid || emailError || passwordError ">
+  </form>
+
+</div>
